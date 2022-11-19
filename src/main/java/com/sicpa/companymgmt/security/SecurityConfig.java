@@ -14,16 +14,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
     @Value("${spring.security.secure-key-username}")
-    private  String SECURE_KEY_USERNAME;
+    private  String secureKeyUsername;
 
     @Value("${spring.security.secure-key-password}")
-    private  String SECURE_KEY_PASSWORD;
+    private  String secureKeyPassword;
 
     @Value("${spring.security.secure-key-username-2}")
-    private  String SECURE_KEY_USERNAME_2;
+    private  String secureKeyUsername2;
 
     @Value("${spring.security.secure-key-password-2}")
-    private  String SECURE_KEY_PASSWORD_2;
+    private  String secureKeyPassword2;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -31,12 +31,12 @@ public class SecurityConfig {
                 AuthenticationManagerBuilder.class
         );
         authenticationManagerBuilder.inMemoryAuthentication()
-                .withUser(SECURE_KEY_USERNAME)
-                .password(new BCryptPasswordEncoder().encode(SECURE_KEY_PASSWORD))
+                .withUser(secureKeyUsername)
+                .password(new BCryptPasswordEncoder().encode(secureKeyPassword))
                 .authorities(AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"))
                 .and()
-                .withUser(SECURE_KEY_USERNAME_2)
-                .password(new BCryptPasswordEncoder().encode(SECURE_KEY_PASSWORD_2))
+                .withUser(secureKeyUsername2)
+                .password(new BCryptPasswordEncoder().encode(secureKeyPassword2))
                 .authorities(AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_DEV"))
                 .and()
                 .passwordEncoder(new BCryptPasswordEncoder());
