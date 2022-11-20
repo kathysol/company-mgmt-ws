@@ -46,5 +46,5 @@ public class Enterprise {
     private LocalDateTime modifiedDate;
 
     @OneToMany(mappedBy = "enterprise")
-    private Collection<Department> enterprises;
+    private Collection<Department> departments;
 }
