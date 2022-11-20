@@ -10,28 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 @Entity
-@Table(name = "department")
+@Table(name = "departmentEmployee")
 @Data
-public class Department {
-
+public class DepartmentEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "name_dep",length =100,nullable = false )
-    private String name;
-
-    @Column(name = "description_dep",length =500)
-    private String description;
-
-    @Column(name = "phone_dep",length =10)
-    private String phone;
 
     @Column(name = "status")
     private Boolean status;
@@ -49,9 +37,11 @@ public class Department {
     private LocalDateTime modifiedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_enterprise", referencedColumnName = "id", insertable = false, updatable = false)
-    private Enterprise enterprise;
+    @JoinColumn(name = "id_department", referencedColumnName = "id", insertable = false, updatable = false)
+    private Department department;
 
-    @OneToMany(mappedBy = "department")
-    private Collection<DepartmentEmployee> departmentEmployees;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_employee", referencedColumnName = "id", insertable = false, updatable = false)
+    private Employee employee;
+
 }
