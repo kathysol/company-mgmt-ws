@@ -20,8 +20,12 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 
     @Override
     public Enterprise saveEnterprise(Enterprise enterprise){
-        enterprise.setCreatedDate(LocalDateTime.now());
-        return enterpriseRepository.save(enterprise);
+        if (enterprise.getId()==null){
+            enterprise.setCreatedDate(LocalDateTime.now());
+        }else{
+            enterprise.setModifiedDate(LocalDateTime.now());
+        }
+      return enterpriseRepository.save(enterprise);
     }
 
     @Override
