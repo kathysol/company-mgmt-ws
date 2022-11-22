@@ -1,7 +1,6 @@
 package com.sicpa.companymgmt.controller;
 
 import com.sicpa.companymgmt.model.Employee;
-import com.sicpa.companymgmt.model.Enterprise;
 import com.sicpa.companymgmt.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +20,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @GetMapping
+    public ResponseEntity<Object> getAllEmployees(){
+        return  ResponseEntity.ok(employeeService.findAllEmployees());
+    }
     @PostMapping
     public ResponseEntity<Object> saveEmployee(@RequestBody Employee employee){
 
@@ -32,10 +35,5 @@ public class EmployeeController {
 
         employeeService.deleteEmployee(idEmployee);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<Object> getAllEmployees(){
-        return ResponseEntity.ok(employeeService.findAllEmployees());
     }
 }

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface DepartmentEmployeeService {
 
-    DepartmentEmployee saveEmployeeRepository(DepartmentEmployee departmentEmployee);
+    DepartmentEmployee saveDepartmentEmployee(DepartmentEmployee departmentEmployee);
 
     void deleteDepartmentEmployee(Long idDepartmentEmployee);
 
-    List<DepartmentEmployee> findAllEnterprises();
+    List<DepartmentEmployee> findAllDepartmentEmployees();
 }

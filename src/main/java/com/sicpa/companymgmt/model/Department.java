@@ -1,5 +1,6 @@
 package com.sicpa.companymgmt.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -50,6 +51,7 @@ public class Department {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_enterprise", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonBackReference
     private Enterprise enterprise;
 
     @OneToMany(mappedBy = "department")

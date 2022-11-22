@@ -1,7 +1,7 @@
 package com.sicpa.companymgmt.controller;
 
-import com.sicpa.companymgmt.model.Enterprise;
-import com.sicpa.companymgmt.service.EnterpriseService;
+import com.sicpa.companymgmt.model.DepartmentEmployee;
+import com.sicpa.companymgmt.service.DepartmentEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,29 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/enterprise")
-public class EnterpriseController {
+@RequestMapping("api/departmentEmployee")
+public class DepartmentEmployeeController {
 
     @Autowired
-    private EnterpriseService enterpriseService;
+    public DepartmentEmployeeService departmentEmployeeService;
 
     @PostMapping
-    public ResponseEntity<Object> saveEnterprise(@RequestBody Enterprise enterprise){
+    public ResponseEntity<Object> saveEnterprise(@RequestBody DepartmentEmployee departmentEmployee){
 
-        return new ResponseEntity<>(enterpriseService.saveEnterprise(enterprise), HttpStatus.CREATED);
+        return new ResponseEntity<>(departmentEmployeeService.saveDepartmentEmployee(departmentEmployee), HttpStatus.CREATED);
     }
 
     @DeleteMapping("{idInmueble}")
-    public ResponseEntity<Object> deleteEnterprise(@PathVariable Long idInmueble){
+    public ResponseEntity<Object> deleteEnterprise(@PathVariable Long idDepartmentEmployee){
 
-        enterpriseService.deleteEnterprise(idInmueble);
+        departmentEmployeeService.deleteDepartmentEmployee(idDepartmentEmployee);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<Object> getAllEnterprises(){
-            return ResponseEntity.ok(enterpriseService.findAllEnterprises());
+        return ResponseEntity.ok(departmentEmployeeService.findAllDepartmentEmployees());
     }
-
 
 }
