@@ -34,7 +34,7 @@ public class Employee {
     @Column(name = "position_emp",length =100)
     private String position;
 
-    @Column(name = "surname_dep",length =100)
+    @Column(name = "surname_emp",length =100)
     private String surname;
 
     @Column(name = "status")
