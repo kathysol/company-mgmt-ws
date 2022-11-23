@@ -1,6 +1,6 @@
 package com.sicpa.companymgmt.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -47,6 +47,7 @@ public class Enterprise {
     private LocalDateTime modifiedDate;
 
     @OneToMany(mappedBy = "enterprise")
-    @JsonManagedReference
+    @JsonIgnore
     private Collection<Department> departments;
+
 }

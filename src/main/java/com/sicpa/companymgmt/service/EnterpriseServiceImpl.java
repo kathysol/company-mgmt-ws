@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService{
@@ -35,6 +36,10 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 
     @Override
     public List<Enterprise> findAllEnterprises(){
-        return enterpriseRepository.findAll();
+          return enterpriseRepository.findAll();
+    }
+    @Override
+    public Optional<Enterprise> findById(Long idEnterprise){
+        return enterpriseRepository.findById(idEnterprise);
     }
 }

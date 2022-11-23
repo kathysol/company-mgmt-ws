@@ -1,5 +1,6 @@
 package com.sicpa.companymgmt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -36,10 +37,12 @@ public class DepartmentEmployee {
     @Column(name = "modified_date")
     private LocalDateTime modifiedDate;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_department", referencedColumnName = "id", insertable = false, updatable = false)
     private Department department;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_employee", referencedColumnName = "id", insertable = false, updatable = false)
     private Employee employee;
